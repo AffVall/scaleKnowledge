@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090f14">
+  <meta name="description" content="Do cotidiano ao universo. Explore tamanhos e distâncias do espaço com uma régua que respeita as proporções.">
+  <title>Régua Cósmica — Do cotidiano ao universo</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090f14'/%3E%3Ccircle cx='32' cy='27' r='12' fill='%2391e7cc'/%3E%3Cpath d='M12 47h40M12 42v10m10-5v5m10-10v10m10-5v5m10-10v10' stroke='%23f4f7fb' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#explorador">Pular para o explorador</a>
+  <header class="site-header"><div class="shell header-inner">
+    <a class="brand" href="#macro/terra-lua" aria-label="Régua Cósmica, início"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="13" r="8" fill="currentColor"/><path d="M3 29h30M3 24v10m7-5v5m8-10v10m8-5v5m7-10v10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>RÉGUA<br>CÓSMICA</span></a>
+    <span class="header-note">Um lugar para entender proporções.</span>
+    <button class="text-button calibration-trigger" data-open="calibration"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v10H3zM7 7v5m5-5v3m5-3v5"/></svg><span>Calibrar tela</span></button>
+  </div></header>
+
+  <main class="shell" id="explorador">
+    <div class="journey-heading"><div><span class="eyebrow">EXPLORE O MACRO</span><h2>Do cotidiano ao universo.</h2></div><p>Uma referência familiar.<br>Um universo de proporções.</p></div>
+    <nav class="chapter-nav" id="chapter-nav" aria-label="Etapas da jornada Macro"></nav>
+    <section class="explorer" aria-labelledby="scene-title">
+      <div class="story">
+        <div class="eyebrow" id="chapter-label">02 / A TERRA E SUA VIZINHA</div>
+        <h1 id="scene-title">E se a Terra<br>tivesse <em>5 cm?</em></h1>
+        <p class="story-description" id="scene-description">Você pode colocá-la na palma da mão. A Lua, na mesma escala, vai precisar de um pouco mais de espaço.</p>
+        <div class="anchor-control">
+          <label for="anchor-size" id="anchor-label">Diâmetro da Terra na tela</label>
+          <div class="anchor-input"><input id="anchor-size" type="number" min="0.000000000001" max="100" step="any" value="5" inputmode="decimal"><span>cm</span><span class="anchor-lock" aria-label="Proporções vinculadas">↔</span></div>
+          <div class="presets" aria-label="Tamanhos de referência"><button data-cm="2">2 cm</button><button data-cm="5" aria-pressed="true">5 cm</button><button data-cm="10">10 cm</button><button data-cm="20">20 cm</button></div>
+          <p class="calibration-state"><span id="calibration-state">Medida aproximada da tela</span><button data-open="calibration" aria-label="Entender e calibrar a medida da tela">ⓘ</button></p>
+        </div>
+        <div class="discovery"><span id="discovery-label">A Lua ficaria a</span><strong id="discovery-value">1,51 <span>m</span></strong><p id="discovery-copy">de centro a centro. Mais de 30 Terras de distância.</p></div>
+        <button class="text-button source-trigger" data-open="sources">De onde vêm os números <span aria-hidden="true">↗</span></button>
+      </div>
+
+      <div class="instrument">
+        <div class="instrument-toolbar"><div class="view-switch" aria-label="Tipo de comparação"><button data-view="distance" aria-pressed="true">Distâncias</button><button data-view="size" aria-pressed="false">Tamanhos</button></div><button class="text-button" id="fit-scene" title="Muda a escala de todos os objetos para enquadrar a cena">Ver tudo <span aria-hidden="true">⤢</span></button></div>
+        <div class="scene" id="scene" tabindex="0" role="region" aria-label="Cena em escala. Arraste ou use as setas do teclado para percorrer.">
+          <div class="scene-contract" id="scene-contract">TAMANHOS E DISTÂNCIAS EM ESCALA</div>
+          <div class="world" id="world" aria-hidden="true"></div>
+          <div class="edge-locators" id="edge-locators"></div>
+          <div class="empty-space" id="empty-space" hidden><span>Esse espaço também<br>faz parte da escala.</span></div>
+          <div class="scene-caption" id="scene-caption">Arraste para explorar <span aria-hidden="true">↔</span></div>
+          <div class="ruler" id="ruler" aria-hidden="true"></div>
+        </div>
+        <div class="scene-scale"><span id="scale-equivalence">1 cm aqui = 2.548 km no espaço</span><span id="field-width"></span></div>
+        <div class="travel"><div class="travel-labels"><button id="travel-start">← Terra</button><span id="travel-progress">Percorra a distância</span><button id="travel-end">Lua →</button></div><input id="travel-range" type="range" min="0" max="1000" value="0" step="1" aria-label="Posição ao longo da distância entre os corpos"><div class="travel-hint" id="travel-hint">Navegação linear · cada trecho mantém a mesma proporção</div></div>
+      </div>
+    </section>
+
+    <div class="reading-strip"><span class="strip-index" aria-hidden="true">↳</span><p id="reading-note">A Lua está fora do quadro porque a distância é grande. Vá até ela ou use “Ver tudo” para reduzir a escala inteira.</p><button class="text-button" id="reset-scene">Voltar à referência <span aria-hidden="true">↺</span></button></div>
+    <section class="measurements" aria-label="Medidas desta comparação"><div class="section-label"><span>NA MESMA RÉGUA</span><span id="measurement-kind">Valores médios · entre centros</span></div><div class="measurement-grid" id="measurements"></div></section>
+    <section id="chapter-extra" class="chapter-extra" hidden></section>
+    <div class="chapter-footer"><button class="text-button" id="previous-chapter">← Etapa anterior</button><span id="chapter-counter">02 / 05</span><button class="next-button" id="next-chapter">Próxima: o Sol <span aria-hidden="true">→</span></button></div>
+  </main>
+  <footer class="site-footer shell"><span>Régua Cósmica <span class="footer-dot">·</span> A proporção é a descoberta.</span><button class="text-button" data-open="method">Como esta régua funciona ↗</button></footer>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript><p class="shell">Ative o JavaScript para explorar. Com a Terra de 5 cm, a Lua mede 1,364 cm e fica a 1,508 m entre centros. A referência usa 12.742,0168 km para o diâmetro terrestre e 384.400 km para a distância lunar média.</p></noscript>
+
+  <dialog id="calibration-dialog" aria-labelledby="calibration-title"><form method="dialog" class="dialog-head"><span class="eyebrow">SUA TELA, SUA RÉGUA</span><button class="close-button" aria-label="Fechar calibração">×</button></form><h2 id="calibration-title">Vamos conferir<br>esses centímetros.</h2><p>Encoste uma régua física na tela. Ajuste a linha abaixo até ela medir exatamente <strong>5 cm</strong>.</p><div class="calibration-sample"><div id="calibration-line"><span>0</span><span>5 cm</span></div></div><label for="calibration-range">Ajustar o comprimento da linha</label><input type="range" id="calibration-range" min="15" max="100" step="0.01" value="37.7952755906"><div class="calibration-adjust"><button id="calibration-less" class="plain-button" aria-label="Diminuir a linha de calibração">−</button><output id="calibration-output">189 px</output><button id="calibration-more" class="plain-button" aria-label="Aumentar a linha de calibração">+</button></div><p class="small-note">Sem calibração, usamos a referência de 96 pixels por polegada: 5 cm ≈ 189 pixels CSS. O tamanho físico depende da tela e do zoom. Recalibre se trocar de monitor ou mudar o zoom.</p><div class="dialog-actions"><button class="text-button" id="calibration-reset">Usar aproximação padrão</button><button class="next-button" id="calibration-save">A linha mede 5 cm ✓</button></div></dialog>
+  <dialog id="sources-dialog" aria-labelledby="sources-title"><form method="dialog" class="dialog-head"><span class="eyebrow">MEDIDAS ABERTAS</span><button class="close-button" aria-label="Fechar fontes">×</button></form><h2 id="sources-title">A conta por trás<br>da imagem.</h2><div id="sources-content"></div></dialog>
+  <dialog id="method-dialog" aria-labelledby="method-title"><form method="dialog" class="dialog-head"><span class="eyebrow">NOSSO CONTRATO</span><button class="close-button" aria-label="Fechar explicação">×</button></form><h2 id="method-title">Uma escala.<br>Para tudo na cena.</h2><p>Você escolhe a medida de uma referência na tela. Todos os outros comprimentos são multiplicados pelo mesmo fator, nos dois eixos.</p><div class="formula">medida na tela = medida real × fator de escala</div><h3>Se não cabe, fica fora do quadro.</h3><p>Arrastar move o ponto de vista. “Ver tudo” muda a escala inteira e atualiza as medidas em centímetros. A largura do celular nunca diminui um objeto silenciosamente.</p><h3>Pequeno continua pequeno.</h3><p>Um objeto menor que um pixel recebe um localizador com seu nome. O localizador ajuda você a encontrá-lo; não representa seu diâmetro.</p><h3>Tamanho não é distância.</h3><p>Em “Tamanhos”, organizamos os corpos lado a lado. Só nessa vista os espaços entre eles não representam suas separações reais. Anéis não entram no diâmetro dos planetas.</p><h3>Centímetros verificáveis.</h3><p>A aproximação inicial usa 96 pixels CSS por polegada. A calibração com régua física ajusta essa relação à sua tela. Mudanças detectadas no zoom invalidam a calibração.</p></dialog>
+</body>
+</html>
